@@ -139,8 +139,9 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 
 COPY root /
 
-# support running as arbitrary user which belogs to the root group
-RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
+RUN mkdir -p /var/run/nginx /var/log/nginx /var/cache/nginx && \
+	chown -R nginx:0 /var/run/nginx /var/log/nginx /var/cache/nginx && \
+	chmod -R g=u /var/run/nginx /var/log/nginx /var/cache/nginx
 
 EXPOSE 8080
 
