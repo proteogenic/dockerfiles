@@ -143,6 +143,8 @@ RUN mkdir -p /var/run/nginx /var/log/nginx /var/cache/nginx && \
 	chown -R nginx:0 /var/run/nginx /var/log/nginx /var/cache/nginx && \
 	chmod -R g=u /var/run/nginx /var/log/nginx /var/cache/nginx
 
+USER nginx:nginx
+
 EXPOSE 8080
 
 STOPSIGNAL SIGTERM
