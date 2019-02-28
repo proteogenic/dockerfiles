@@ -139,6 +139,9 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 
 COPY root /
 
+# support running as arbitrary user which belogs to the root group
+RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
+
 EXPOSE 8080
 
 STOPSIGNAL SIGTERM
